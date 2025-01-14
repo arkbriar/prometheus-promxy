@@ -549,7 +549,7 @@ func (ng *Engine) execEvalStmt(ctx context.Context, query *query, s *parser.Eval
 			ctx:                      ctxInnerEval,
 			maxSamples:               ng.maxSamplesPerQuery,
 			logger:                   ng.logger,
-			lookbackDelta:            ng.lookbackDelta,
+			lookbackDelta:            s.lookbackDelta,
 			noStepSubqueryIntervalFn: ng.noStepSubqueryIntervalFn,
 		}
 
@@ -599,7 +599,7 @@ func (ng *Engine) execEvalStmt(ctx context.Context, query *query, s *parser.Eval
 		ctx:                      ctxInnerEval,
 		maxSamples:               ng.maxSamplesPerQuery,
 		logger:                   ng.logger,
-		lookbackDelta:            ng.lookbackDelta,
+		lookbackDelta:            s.lookbackDelta,
 		noStepSubqueryIntervalFn: ng.noStepSubqueryIntervalFn,
 	}
 	val, warnings, err := evaluator.Eval(s.Expr)
